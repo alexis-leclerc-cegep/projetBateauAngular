@@ -1,0 +1,24 @@
+
+    <div class="row g-5">
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Modèle de bateau</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Modèle</label>
+              <input type="text" class="form-control" id="BoatModel" (input)="chercherBateau($event)" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Le modèle du bateau est requis.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Longueur (en mètre)</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="BoatLength" placeholder="" value="" required>
+                <span class="input-group-text">mètres</span>
+              </div>
+              <div class="invalid-feedback">
+                La longueur est requise.
+              </div>
+            </div>
