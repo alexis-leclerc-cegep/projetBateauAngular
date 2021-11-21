@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http'
-import {Observable} from "rxjs";
+import {ChangeDetectionStrategy, EventEmitter, ChangeDetectorRef, Component, OnInit, Output} from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+
+
 
 const BASE_PATH = "https://iwa2021.edriki.com/api/Boat/Search/";
 const REF_PATH = "https://iwa2021.edriki.com/api/Boat/ByRef/";
@@ -12,15 +13,19 @@ const REF_PATH = "https://iwa2021.edriki.com/api/Boat/ByRef/";
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class ChoixModeleComponent implements OnInit {
+
   bateaux: any;
   selectedBateauNom : string = "";
   selectedBateauRef : string = "";
+  longueurBateau : string = "";
+  inputModele : string = "";
   //bateaux$: Promise<any>|null = null;
 
   constructor(
     private http: HttpClient
   ) {
   }
+  @Output() emitter:EventEmitter<any> = new EventEmitter<any>();
 
   ngOnInit(): void {
   }
@@ -49,21 +54,23 @@ export class ChoixModeleComponent implements OnInit {
   }
   bateauClick(nomBateau: string, refBateau:string){
     this.selectedBateauNom = nomBateau;
+    this.inputModele = nomBateau;
+    this.longueurBateau = "...";
     this.selectedBateauRef = refBateau;
     this.http.get(`${REF_PATH}${refBateau}`)
       .subscribe(( data: any )  => {
         if (data.response.msg == null) {
-          console.log(data.response.datas.lengthm);
+          console.log(data.response.datas);
+          this.longueurBateau = data.response.datas.lengthm;
+          this.emitter.emit(data.response.datas);
         }
       });
     this.bateaux.length = 0;
-    alert(nomBateau + " " + refBateau);
     console.log(nomBateau);
   }
 
   log(bateaux : any){
     let i;
-    console.log(bateaux)
     for (i = 0; i < bateaux.length; i++){
       console.log(bateaux[i].name);
       console.log(bateaux[i].ref);

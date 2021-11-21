@@ -1,27 +1,28 @@
-    <div class="row g-5">
+    <div class="row g-5 m-1">
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Modèle de bateau</h4>
         <form class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="search-box col-sm-6">
               <label for="BoatModel" class="form-label">Modèle</label>
-              <input type="text" list="results" class="form-control"  id="BoatModel" (input)="chercherBateau($event)" placeholder="" value="" required>
+              <input type="text" list="results" class="form-control" [value]="inputModele" id="BoatModel" (input)="chercherBateau($event)" placeholder="" value="" required>
               <div style="max-height: 300px; overflow: auto" class="bg-secondary rounded m-3" id="results">
                 <button type="button" style="width:45%; height: auto" class="btn btn-primary m-1 col-5 "  *ngFor="let bateau of bateaux;" (click)="bateauClick(bateau.name, bateau.ref)" value={{bateau.ref}} >{{bateau.name}}</button>
               </div>
-              <h1>{{selectedBateauNom}}</h1>
               <div class="invalid-feedback">
                 Le modèle du bateau est requis.
               </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-3">
               <label for="" class="form-label">Longueur (en mètre)</label>
               <div class="input-group">
-                <input type="text" class="form-control" id="BoatLength" placeholder="" value="" required>
+                <input type="text" class="form-control" id="BoatLength" placeholder="" [value]="longueurBateau" readonly>
                 <span class="input-group-text display-1">mètres</span>
               </div>
-              <div class="invalid-feedback">
-                La longueur est requise.
-              </div>
             </div>
+            <div class="col-sm-3">
+              <label for="" class="form-label">Numéro de référence</label>
+              <input type="text" class="form-control" id="BoatRef" placeholder="" [value]="selectedBateauRef" readonly>
+            </div>
+          </div>
