@@ -17,6 +17,7 @@ export class DetailsBateauComponent implements OnInit {
   gm: string = ""; //Génois sur mousqueton
   ge: string = ""; //Génois sur enrouleur
 
+  access: string = ""; //Accessoires
 
 
   constructor() { }
@@ -36,7 +37,60 @@ export class DetailsBateauComponent implements OnInit {
       this.gs = changes['bateauDetails'].currentValue.sails.gs;
       this.gm = changes['bateauDetails'].currentValue.sails.gm;
       this.ge = changes['bateauDetails'].currentValue.sails.ge;
+      this.access = "0";
+      //this.access = changes['bateauDetails'].currentValue.sails.access;
     }
+  }
+
+  updateValue(event: any){
+    let input :string = event.target.value;
+      switch(event.target.id){
+        case 'gvl': {
+          console.log(input + " gvl")
+          this.gvl = input
+          break;
+        }
+        case 'gvsl': {
+          console.log(input + " gvsl")
+          this.gvsl = input
+          break;
+        }
+        case 'gve': {
+          console.log(input + " gve")
+          this.gve = input
+          break;
+        }
+        case 'ss': {
+          console.log(input + " ss")
+          this.ss = input
+          break;
+        }
+        case 'sa': {
+          console.log(input + " sa")
+          this.sa = input
+          break;
+        }
+        case 'gs': {
+          console.log(input + " gs")
+          this.gs = input
+          break;
+        }
+        case 'gm': {
+          console.log(input + " gm")
+          this.gm = input
+          break;
+        }
+        case 'gve': {
+          console.log(input + " gve")
+          this.gve = input
+          break;
+        }
+        case 'access': {
+          console.log(input + " access")
+          this.access = input
+          break;
+        }
+      }
   }
 
   log(){

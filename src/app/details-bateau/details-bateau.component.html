@@ -1,20 +1,21 @@
 
+<form>
 <div class="row m-1">
   <div class="col-3">
   <h5>Les grands-voiles</h5>
     <label for="gvl" class="form-label">grand-voile lattée</label>
     <div class="input-group">
-      <input type="text" class="form-control" id="gvl" placeholder="" [placeholder] = "gvl">
+      <input type="number" class="form-control" (input)="updateValue($event)" id="gvl" [placeholder] = "gvl">
       <span class="input-group-text">m<sup>2</sup></span>
     </div>
     <label for="gvsl" class="form-label">grand-voile semi-lattée</label>
     <div class="input-group">
-      <input type="text" class="form-control" id="gvsl"  [placeholder] = "gvsl">
+      <input type="text" class="form-control" (input)="updateValue($event)" id="gvsl"  [placeholder] = "gvsl">
       <span class="input-group-text">m<sup>2</sup></span>
     </div>
     <label for="gve" class="form-label">grand-voile sur enrouleur</label>
     <div class="input-group">
-      <input type="text" class="form-control" id="gve" [placeholder]="gve" >
+      <input type="text" class="form-control" id="gve" (input)="updateValue($event)" [placeholder]="gve" >
       <span class="input-group-text">m<sup>2</sup></span>
     </div>
   </div>
@@ -22,17 +23,17 @@
   <h5>Les voiles de portant</h5>
     <label for="ss" class="form-label">spi symétrique</label>
     <div class="input-group">
-      <input type="text" class="form-control" id="ss" [placeholder]="ss" >
+      <input type="text" class="form-control" id="ss" (input)="updateValue($event)" [placeholder]="ss" >
       <span class="input-group-text">m<sup>2</sup></span>
     </div>
     <label for="sa" class="form-label">spi asymétrique</label>
     <div class="input-group">
-      <input type="text" class="form-control" id="sa" [placeholder]="sa" >
+      <input type="text" class="form-control" id="sa" (input)="updateValue($event)" [placeholder]="sa" >
       <span class="input-group-text">m<sup>2</sup></span>
     </div>
     <label for="gs" class="form-label">gennaker / code 0</label>
     <div class="input-group">
-      <input type="text" class="form-control" id="gs" [placeholder]="gs" >
+      <input type="text" class="form-control" id="gs" (input)="updateValue($event)" [placeholder]="gs" >
       <span class="input-group-text">m<sup>2</sup></span>
     </div>
   </div>
@@ -40,13 +41,25 @@
   <h5>Les voiles d'avant</h5>
     <label for="gm" class="form-label">génois sur mousquetons</label>
     <div class="input-group">
-      <input type="text" class="form-control" id="gm" [placeholder]="gm" >
+      <input type="text" class="form-control" id="gm" (input)="updateValue($event)" [placeholder]="gm" >
       <span class="input-group-text">m<sup>2</sup></span>
     </div>
     <label for="gve" class="form-label">génois sur enrouleur</label>
     <div class="input-group">
-      <input type="text" class="form-control" id="gve" [placeholder]="ge" >
+      <input type="text" class="form-control" id="gve" (input)="updateValue($event)" [placeholder]="ge" >
       <span class="input-group-text">m<sup>2</sup></span>
     </div>
   </div>
+  <div class="col-3">
+  <h5>Accessoires</h5>
+          <label for="access" class="form-label">longueur de la bôme</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="access" (input)="updateValue($event)" [placeholder]="access" >
+    <span class="input-group-text">m<sup>2</sup></span>
+          </div>
+        </div>
+  <div class="col-md-12 text-center">
+    <button class="btn btn-sm btn-warning ">valider mes mesures</button>
+  </div>
 </div>
+</form>

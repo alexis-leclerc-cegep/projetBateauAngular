@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { ChoixModeleComponent } from './choix-modele/choix-modele.component';
 import { HttpClientModule } from "@angular/common/http";
 import { DetailsBateauComponent } from './details-bateau/details-bateau.component';
+import { InfoVoilesComponent } from './info-voiles/info-voiles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChoixModeleComponent,
-    DetailsBateauComponent
+    DetailsBateauComponent,
+    InfoVoilesComponent
   ],
   imports: [
     BrowserModule,
