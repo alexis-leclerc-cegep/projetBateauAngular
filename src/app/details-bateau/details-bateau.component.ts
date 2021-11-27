@@ -27,30 +27,22 @@ export interface inputCheck{
 
 export class DetailsBateauComponent implements OnInit {
   inputCheck: boolean = true;
-  monBateau = {} as Bateau;
-  monBateauModif = {} as Bateau; //Utilisé afin de conserver les placeholders. Peut être enlevé si jugé qu'il prend trop de mémoire pour son utilité. Pour enlever, changer monBateauModif pour monBateau dans fonction 
-  //Ne fonctionne pas comme il faut
+  monBateauOriginal = {} as Bateau;
+  monBateau= {} as Bateau; //Utilisé afin de conserver les placeholders. Peut être enlevé si jugé qu'il prend trop de mémoire pour son utilité. Pour enlever, changer monBateauModif pour monBateau dans fonction 
 
   @Input() bateauDetails : any;
 
 
   ngOnInit(): void {
-    this.monBateau = {
-        gvl : "",
-        gvsl : "",
-        gve : "",
-        ss : "",
-        sa : "",
-        gs : "",
-        gm : "",
-        ge : "",
-        access : ""
+    this.monBateauOriginal = {
+        gvl : "", gvsl : "", gve : "", ss : "",
+        sa : "", gs : "", gm : "", ge : "", access : ""
     }
   }
 
   ngOnChanges(changes: SimpleChanges){
     if (!changes['bateauDetails'].isFirstChange()){
-      this.monBateau = {
+      this.monBateauOriginal = {
         gvl : changes['bateauDetails'].currentValue.sails.gvl, 
         gvsl : changes['bateauDetails'].currentValue.sails.gvsl, 
         gve : changes['bateauDetails'].currentValue.sails.gve, 
@@ -61,7 +53,7 @@ export class DetailsBateauComponent implements OnInit {
         ge : changes['bateauDetails'].currentValue.sails.ge, 
         access : '0'
       };
-      this.monBateauModif = this.monBateau;
+      this.monBateau = Object.assign([], this.monBateauOriginal); //ca marche mais monBateau devient un array au lieu d'un object??/
       console.log(this.monBateau.gvl);
     }
   }
@@ -69,9 +61,10 @@ export class DetailsBateauComponent implements OnInit {
   updateValue(event:any){
     let input : string = event.target.value;
     let id : string = event.target.id;
-    if((Number(input)) && (input.length > 2)){
+    if((Number(input)) && (input.length >= 2)){
       this.inputCheck = true;
-      (this.monBateauModif as any)[id] = input;
+      (this.monBateau as any)[id] = input;
+      this.logBateaux();
     }
     else{
       this.inputCheck = false;
@@ -79,14 +72,23 @@ export class DetailsBateauComponent implements OnInit {
   }
 
 checkInputs(){ //changer le nom de cette fonction
-  if(this.inputCheck)
-  {
-    alert("Tout les valeurs entrées sont bonnes");
+  this.logBateaux();
+    if(this.inputCheck)
+    {
+      alert("Toutes les valeurs entrées sont bonnes");
+    }
+    else{
+      alert("Une des valeurs entrées est erronée");
+    }
   }
-  else{
-    alert("Une des valeurs entrées est erronée");
+
+  logBateaux(){
+    console.log("bateua modifié");
+    console.log(this.monBateau);
+    console.log(this.monBateau['gvl']);
+    console.log("bateua original");
+    console.log(this.monBateauOriginal);
   }
-}
 
   log(){
     console.log(this.bateauDetails);
