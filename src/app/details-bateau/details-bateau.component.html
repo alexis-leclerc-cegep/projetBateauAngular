@@ -1,5 +1,5 @@
 
-<form>
+<form *ngIf="showComponent" (keydown.enter)="checkInputs()">
 <div class="row m-1">
   <div class="col-3">
   <h5>Les grands-voiles</h5>

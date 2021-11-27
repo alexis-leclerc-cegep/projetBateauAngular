@@ -1,3 +1,4 @@
+import { trigger } from '@angular/animations';
 import { Component, OnInit, Input, SimpleChanges} from '@angular/core';
 
 export interface Bateau{
@@ -15,10 +16,6 @@ export interface Bateau{
   access?: string; //Accessoires
 }
 
-export interface inputCheck{
-  isInputGood: boolean;
-  whichNotGood: string;
-}
 @Component({
   selector: 'app-details-bateau',
   templateUrl: './details-bateau.component.html',
@@ -27,6 +24,7 @@ export interface inputCheck{
 
 export class DetailsBateauComponent implements OnInit {
   inputCheck: boolean = true;
+  showComponent: boolean = false;
   monBateauOriginal = {} as Bateau;
   monBateau= {} as Bateau; //Utilisé afin de conserver les placeholders. Peut être enlevé si jugé qu'il prend trop de mémoire pour son utilité. Pour enlever, changer monBateauModif pour monBateau dans fonction 
 
@@ -54,7 +52,7 @@ export class DetailsBateauComponent implements OnInit {
         access : '0'
       };
       this.monBateau = Object.assign([], this.monBateauOriginal); //ca marche mais monBateau devient un array au lieu d'un object??/
-      console.log(this.monBateau.gvl);
+      this.showComponent = true;
     }
   }
 
