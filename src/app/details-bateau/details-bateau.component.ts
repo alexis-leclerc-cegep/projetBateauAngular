@@ -4,7 +4,7 @@ import {
   HttpErrorResponse,
   HttpHeaders
 } from '@angular/common/http'
-import { Component, OnInit, Input, SimpleChanges} from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, EventEmitter, Output} from '@angular/core';
 
 const PRICE_PATH = "https://iwa2021.edriki.com/api/Item/Items";
 
@@ -36,6 +36,8 @@ export class DetailsBateauComponent implements OnInit {
   constructor(
     private http: HttpClient
   ) {}
+  @Output() emitter: EventEmitter < any > = new EventEmitter < any > ();
+  Voiles= {};
   inputCheck: boolean = true;
   showComponent: boolean = false;
   monBateauOriginal = {} as Bateau;
@@ -93,11 +95,12 @@ checkInputs(){ //changer le nom de cette fonction
     else{
       console.log("Une des valeurs entrées est erronée");
     }
-    let request: string = PRICE_PATH + "?gvl=" + this.monBateau['gvl'] + "&gvsl=" +this.monBateau['gvsl']+"&gve="+this.monBateau['gve'] +"&ss=" + this.monBateau['ss'] + "&gs=" + this.monBateau['gs'];
+    let request: string = PRICE_PATH + "?length=" + this.monBateau['longueur'] + "gvl=" + this.monBateau['gvl'] + "&gvsl=" +this.monBateau['gvsl']+"&gve="+this.monBateau['gve'] +"&ss=" + this.monBateau['ss'] + "&gs=" + this.monBateau['gs'];
     console.log(request);
 
     this.http.get<any>(PRICE_PATH + "?gvl=" + this.monBateau['gvl']).subscribe(data => {
-      console.log(data);
+      this.Voiles = (data.response.datas);
+      this.emitter.emit(this.Voiles);
     })
   }
 

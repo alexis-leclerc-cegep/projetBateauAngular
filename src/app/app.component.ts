@@ -7,8 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'untitled3';
+  Voiles: any = "";
   bateauDetails: any = "";
   send(lesdetails : any){
     this.bateauDetails = lesdetails;
+  }
+  sendVoile(voiles: any){
+    this.Voiles = voiles;
   }
 }

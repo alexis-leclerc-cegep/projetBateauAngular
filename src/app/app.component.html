@@ -1,4 +1,5 @@
   <main>
     <app-choix-modele (emitter)="send($event)"></app-choix-modele>
-    <app-details-bateau (emitter)="send($event)" [bateauDetails] = "bateauDetails"></app-details-bateau>
+    <app-details-bateau (emitter)="sendVoile($event)" [bateauDetails] = "bateauDetails"></app-details-bateau>
+    <app-info-voiles [Voiles] = "Voiles"></app-info-voiles>
   </main>
