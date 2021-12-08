@@ -66,7 +66,7 @@ export class ChoixModeleComponent implements OnInit {
           })
           if (data.response.msg == null) {
             this.bateaux = data.response.datas;
-          } else {
+           } else {
             console.log("marche po");
           }
         });
@@ -90,7 +90,4 @@ export class ChoixModeleComponent implements OnInit {
     this.bateaux.length = 0;
     console.log(nomBateau);
   }
-
-
-
 }

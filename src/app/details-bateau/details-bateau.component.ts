@@ -1,7 +1,16 @@
 import { trigger } from '@angular/animations';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders
+} from '@angular/common/http'
 import { Component, OnInit, Input, SimpleChanges} from '@angular/core';
 
+const PRICE_PATH = "https://iwa2021.edriki.com/api/Item/Items";
+
 export interface Bateau{
+  longueur?: string; //longueur
+
   gvl?: string; //Grand-Voile Lattée
   gvsl?: string; //Grand-Voile Semi Lattée
   gve?: string; //Grand-Voile sur Enrouleur
@@ -22,7 +31,11 @@ export interface Bateau{
   styleUrls: ['./details-bateau.component.css']
 })
 
+
 export class DetailsBateauComponent implements OnInit {
+  constructor(
+    private http: HttpClient
+  ) {}
   inputCheck: boolean = true;
   showComponent: boolean = false;
   monBateauOriginal = {} as Bateau;
@@ -33,14 +46,16 @@ export class DetailsBateauComponent implements OnInit {
 
   ngOnInit(): void {
     this.monBateauOriginal = {
-        gvl : "", gvsl : "", gve : "", ss : "",
+        longueur : "", gvl : "", gvsl : "", gve : "", ss : "",
         sa : "", gs : "", gm : "", ge : "", access : ""
     }
   }
 
   ngOnChanges(changes: SimpleChanges){
     if (!changes['bateauDetails'].isFirstChange()){
+      console.log(changes['bateauDetails'].currentValue.lengthm);
       this.monBateauOriginal = {
+        longueur : changes['bateauDetails'].currentValue.lengthm, 
         gvl : changes['bateauDetails'].currentValue.sails.gvl, 
         gvsl : changes['bateauDetails'].currentValue.sails.gvsl, 
         gve : changes['bateauDetails'].currentValue.sails.gve, 
@@ -73,11 +88,17 @@ checkInputs(){ //changer le nom de cette fonction
   this.logBateaux();
     if(this.inputCheck)
     {
-      alert("Toutes les valeurs entrées sont bonnes");
+      console.log("Toutes les valeurs entrées sont bonnes");
     }
     else{
-      alert("Une des valeurs entrées est erronée");
+      console.log("Une des valeurs entrées est erronée");
     }
+    let request: string = PRICE_PATH + "?gvl=" + this.monBateau['gvl'] + "&gvsl=" +this.monBateau['gvsl']+"&gve="+this.monBateau['gve'] +"&ss=" + this.monBateau['ss'] + "&gs=" + this.monBateau['gs'];
+    console.log(request);
+
+    this.http.get<any>(PRICE_PATH + "?gvl=" + this.monBateau['gvl']).subscribe(data => {
+      console.log(data);
+    })
   }
 
   logBateaux(){
