@@ -16,4 +16,8 @@ npm install rxjs --save
 
 Le projet utilise aussi [ForEvolve/bootstrap-dark](https://github.com/ForEvolve/bootstrap-dark) afin d'avoir un mode sombre.
 
-Il est installé en exécutant la commande `npm install @forevolve/bootstrap-dark --save`
+Il est installé en exécutant cette commande 
+
+```
+npm install @forevolve/bootstrap-dark --save
+```
