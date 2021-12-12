@@ -1,66 +1,82 @@
+<div *ngIf="afficher">
 
-<div *ngIf="afficher" >
+  <hr class="my-4">
+  <div class="col-12">
+    <ul class="nav nav-tabs">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="gv-tab" data-bs-toggle="tab" data-bs-target="#tab-gv" type="button"
+          role="tab" aria-controls="gv" aria-selected="true">Grands-voiles</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="ge-tab" data-bs-toggle="tab" data-bs-target="#tab-ge" type="button" role="tab"
+          aria-controls="ge" aria-selected="true">Voiles d'avant</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="spi-tab" data-bs-toggle="tab" data-bs-target="#tab-spi" type="button" role="tab"
+          aria-controls="spi" aria-selected="true">Voiles de portant</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="access-tab" data-bs-toggle="tab" data-bs-target="#tab-access" type="button"
+          role="tab" aria-controls="access" aria-selected="true">Accessoires</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="tab-sails">
+      <div class="tab-pane fade show active" id="tab-gv" role="tabpanel" aria-labelledby="gv-tab">
+        <h1 class="m-3">Grand-voiles sur enrouleur</h1>
 
-			<hr class="my-4">
-			<div class="col-12">
-			<ul class="nav nav-tabs">
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link active" id="gv-tab" data-bs-toggle="tab" data-bs-target="#tab-gv" type="button" role="tab" aria-controls="gv" aria-selected="true">Grands-voiles</button>
-			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="ge-tab" data-bs-toggle="tab" data-bs-target="#tab-ge" type="button" role="tab" aria-controls="ge" aria-selected="true">Voiles d'avant</button>
-			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="spi-tab" data-bs-toggle="tab" data-bs-target="#tab-spi" type="button" role="tab" aria-controls="spi" aria-selected="true">Voiles de portant</button>
-			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="access-tab" data-bs-toggle="tab" data-bs-target="#tab-access" type="button" role="tab" aria-controls="access" aria-selected="true">Accessoires</button>
-			  </li>
-			</ul>
-			<div class="tab-content" id="tab-sails">
-			  <div class="tab-pane fade show active" id="tab-gv" role="tabpanel" aria-labelledby="gv-tab">
-				<h1>Grand-voiles sur enrouleur</h1>
-				
-				<div *ngFor="let voile of lesVoiles['grandvoiles']['gve']">
-				<div class="row"><p></p></div>
-				<div class="row">
-					<img src="./gvl.png" class="col-md-3 img-responsive">
-					<div class="col-md-6" [innerHTML]="voile.description">
-					</div>
-					<div class="col-md-3">À partir de {{voile.price.unitPrice}} $ <button class="btn btn-primary">Configurer</button></div>
-				</div>
-				<hr class="my-4"></div>
-				<div class="row">
-					<img src="./gvl.png" class="col-md-3 img-responsive">
-					<div class="col-md-6">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non luctus ligula. Fusce lobortis neque eget auctor viverra. Maecenas mattis vehicula nibh, eu dapibus quam. Donec porttitor rutrum iaculis. Nulla quam metus, fringilla a nunc non, malesuada placerat nisl. Quisque placerat diam sed nunc dapibus placerat. Nunc congue non sapien non iaculis.
-						<ul>
-							<li>Lorem ipsum dolor sit amet</li>
-							<li>Lorem ipsum dolor sit amet</li>
-							<li>Lorem ipsum dolor sit amet</li>
-						</ul>
-					</div>
-					<div class="col-md-3">À partir de 9999,99 $ <button class="btn btn-primary">Configurer</button></div>
-				</div>
-				<hr class="my-4">
-				<div class="row">
-					<img src="./gvl.png" class="col-md-3 img-responsive">
-					<div class="col-md-6">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non luctus ligula. Fusce lobortis neque eget auctor viverra. Maecenas mattis vehicula nibh, eu dapibus quam. Donec porttitor rutrum iaculis. Nulla quam metus, fringilla a nunc non, malesuada placerat nisl. Quisque placerat diam sed nunc dapibus placerat. Nunc congue non sapien non iaculis.
-						<ul>
-							<li>Lorem ipsum dolor sit amet</li>
-							<li>Lorem ipsum dolor sit amet</li>
-							<li>Lorem ipsum dolor sit amet</li>
-						</ul>
-					</div>
-					<div class="col-md-3">À partir de 9999,99 $ <button class="btn btn-primary">Configurer</button></div>
-				</div>
-			  </div>
-			  <div class="tab-pane fade show " id="tab-ge" role="tabpanel" aria-labelledby="ge-tab"></div>
-			  <div class="tab-pane fade show " id="tab-spi" role="tabpanel" aria-labelledby="spi-tab"></div>
-			  <div class="tab-pane fade show " id="tab-access" role="tabpanel" aria-labelledby="access-tab"></div>
-			</div>
+        <div *ngFor="let voile of lesVoiles['grandvoiles']['gve']">
+          <div class="row m-2 border">
+            <div class="col-md-8 m-3" [innerHTML]="voile.description">
+            </div>
+            <div class="col-md-3 m-3">À partir de {{voile.price.unitPrice}} $ <button
+                class="btn btn-primary">Configurer</button></div>
+          </div>
+        </div>
+        <h1 class="m-3">Grand-voiles semi-lattées</h1>
+
+        <div *ngFor="let voile of lesVoiles['grandvoiles']['gvsl']">
+          <div class="row m-2 border">
+            <div class="col-md-8 m-3" [innerHTML]="voile.description">
+            </div>
+            <div class="col-md-3 m-3">À partir de {{voile.price.unitPrice}} $ <button
+                class="btn btn-primary">Configurer</button></div>
+          </div>
+        </div>
+        <h1 class="m-3">Grand-voiles lattées</h1>
+
+        <div *ngFor="let voile of lesVoiles['grandvoiles']['gvl']">
+          <div class="row m-2 border">
+            <div class="col-md-8 m-3" [innerHTML]="voile.description">
+            </div>
+            <div class="col-md-3 m-3">À partir de {{voile.price.unitPrice}} $ <button
+                class="btn btn-primary">Configurer</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade show " id="tab-ge" role="tabpanel" aria-labelledby="ge-tab">
+		<h1 class="m-3">Genois sur enrouleur</h1>
+        <div *ngFor="let voile of lesVoiles['voilesavant']['ge']">
+          <div class="row m-2 border">
+            <div class="col-md-8 m-3" [innerHTML]="voile.description">
+            </div>
+            <div class="col-md-3 m-3">À partir de {{voile.price.unitPrice}} $ <button
+                class="btn btn-primary">Configurer</button></div>
+          </div>
+        </div>
+		<h1 class="m-3">Genois sur mousqueton</h1>
+        <div *ngFor="let voile of lesVoiles['voilesavant']['gm']">
+          <div class="row m-2 border">
+            <div class="col-md-8 m-3" [innerHTML]="voile.description">
+            </div>
+            <div class="col-md-3 m-3">À partir de {{voile.price.unitPrice}} $ <button
+                class="btn btn-primary">Configurer</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade show " id="tab-spi" role="tabpanel" aria-labelledby="spi-tab"></div>
+      <div class="tab-pane fade show " id="tab-access" role="tabpanel" aria-labelledby="access-tab"></div>
+    </div>
 
 
 
-</div>
+  </div>
