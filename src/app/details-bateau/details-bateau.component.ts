@@ -98,7 +98,7 @@ checkInputs(){ //changer le nom de cette fonction
     let request: string = PRICE_PATH + "?length=" + this.monBateau['longueur'] + "gvl=" + this.monBateau['gvl'] + "&gvsl=" +this.monBateau['gvsl']+"&gve="+this.monBateau['gve'] +"&ss=" + this.monBateau['ss'] + "&gs=" + this.monBateau['gs'];
     console.log(request);
 
-    this.http.get<any>(PRICE_PATH + "?gvl=" + this.monBateau['gvl']).subscribe(data => {
+    this.http.get<any>(request).subscribe(data => {
       this.Voiles = (data.response.datas);
       this.emitter.emit(this.Voiles);
     })

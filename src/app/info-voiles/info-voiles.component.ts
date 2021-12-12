@@ -1,4 +1,13 @@
-import { Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import { Component, Directive, Input, OnInit, SimpleChanges} from '@angular/core';
+
+
+interface iVoiles {
+  grandvoiles : {
+    gve : any;
+    gvl : any;
+    gvsl : any;
+  };
+}
 
 @Component({
   selector: 'app-info-voiles',
@@ -6,13 +15,16 @@ import { Component, Input, OnInit, SimpleChanges} from '@angular/core';
   styleUrls: ['./info-voiles.component.css']
 })
 
-interface Voiles{
-  
-}
-export class InfoVoilesComponent implements OnInit {
 
+export class InfoVoilesComponent implements OnInit {
   constructor() { }
 
+  //interface qui contiendra toutes les voiles afin de les afficher de manière classée
+  lesVoiles :  iVoiles = {
+    grandvoiles : {
+      gve : [], gvl : [], gvsl : []
+    }
+  };
   afficher:boolean = false;
   
   @Input() Voiles : any;
@@ -23,17 +35,23 @@ export class InfoVoilesComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges){
     if (!changes['Voiles'].isFirstChange()){
       this.result = changes['Voiles'].currentValue;
-      for (let i = 0; i < (this.result as any).length; i++){
-          if ((this.result as any)[i]['type'] == "GVE"){
-            console.log("oue");
-          }
-          switch((this.result as any)[i]['type']){
+      let resultat = (this.result as any)
+      for (let i = 0; i < resultat.length; i++){
+          console.log(resultat[i]['type']);
+          switch(resultat[i]['type']){
             case "GVE":
-
+              this.lesVoiles.grandvoiles.gve.push(resultat[i]);
+              break;
+            case "GVSL":
+              this.lesVoiles.grandvoiles.gvsl.push(resultat[i]);
+              break;
           } 
       }
+      console.log("les gve : ");
+      console.log(this.lesVoiles["grandvoiles"]['gve']);
+      console.log("les gvsl : ");
+      console.log(this.lesVoiles["grandvoiles"]['gvsl']);
       this.afficher = true;
     }
-    console.log(this.result);
   }
 }

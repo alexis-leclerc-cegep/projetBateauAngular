@@ -19,20 +19,17 @@
 			</ul>
 			<div class="tab-content" id="tab-sails">
 			  <div class="tab-pane fade show active" id="tab-gv" role="tabpanel" aria-labelledby="gv-tab">
+				<h1>Grand-voiles sur enrouleur</h1>
+				
+				<div *ngFor="let voile of lesVoiles['grandvoiles']['gve']">
 				<div class="row"><p></p></div>
 				<div class="row">
 					<img src="./gvl.png" class="col-md-3 img-responsive">
-					<div class="col-md-6">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non luctus ligula. Fusce lobortis neque eget auctor viverra. Maecenas mattis vehicula nibh, eu dapibus quam. Donec porttitor rutrum iaculis. Nulla quam metus, fringilla a nunc non, malesuada placerat nisl. Quisque placerat diam sed nunc dapibus placerat. Nunc congue non sapien non iaculis.
-						<ul>
-							<li>Lorem ipsum dolor sit amet</li>
-							<li>Lorem ipsum dolor sit amet</li>
-							<li>Lorem ipsum dolor sit amet</li>
-						</ul>
+					<div class="col-md-6" [innerHTML]="voile.description">
 					</div>
-					<div class="col-md-3">À partir de 9999,99 $ <button class="btn btn-primary">Configurer</button></div>
+					<div class="col-md-3">À partir de {{voile.price.unitPrice}} $ <button class="btn btn-primary">Configurer</button></div>
 				</div>
-				<hr class="my-4">
+				<hr class="my-4"></div>
 				<div class="row">
 					<img src="./gvl.png" class="col-md-3 img-responsive">
 					<div class="col-md-6">
