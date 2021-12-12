@@ -14,6 +14,12 @@ Le package rxjs, qui peut être installé avec la commande ci-bas, doit-être in
 npm install rxjs --save
 ```
 
+Bootstrap doit être installé pour avoir le support des onglets, en exécutant la commande suivante
+
+```
+npm install --save bootstrap
+```
+
 Le projet utilise aussi [ForEvolve/bootstrap-dark](https://github.com/ForEvolve/bootstrap-dark) afin d'avoir un mode sombre.
 
 Il est installé en exécutant cette commande 
