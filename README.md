@@ -6,7 +6,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Prérequis
 
+Node.js doit être installé
+
 Le projet est sur Angular 13
+
+Pour tout installer, éxécuter la commande ci-dessous
+
+```
+npm install -g @angular/cli bootstrap @forevolve/bootstrap-dark rxjs
+```
 
 Le package rxjs, qui peut être installé avec la commande ci-bas, doit-être installé.
 
