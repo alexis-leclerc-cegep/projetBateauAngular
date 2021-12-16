@@ -10,31 +10,14 @@ Node.js doit être installé
 
 Le projet est sur Angular 13
 
-Pour tout installer, éxécuter la commande ci-dessous
+Pour tout installer, exécuter la commande ci-dessous
 
 ```
 npm install -g @angular/cli bootstrap @forevolve/bootstrap-dark rxjs
 ```
 
-Le package rxjs, qui peut être installé avec la commande ci-bas, doit-être installé.
-
-```
-npm install rxjs --save
-```
-
-Bootstrap doit être installé pour avoir le support des onglets, en exécutant la commande suivante
-
-```
-npm install --save bootstrap
-```
-
+Bootstrap doit être installé afin que les onglets soient supportés, en exécutant la commande suivante
 Le projet utilise aussi [ForEvolve/bootstrap-dark](https://github.com/ForEvolve/bootstrap-dark) afin d'avoir un mode sombre.
-
-Il est installé en exécutant cette commande 
-
-```
-npm install @forevolve/bootstrap-dark --save
-```
 
 ## Description composants
 

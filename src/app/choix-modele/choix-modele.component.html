@@ -6,19 +6,17 @@
             <div class="search-box col-sm-6">
               <label for="BoatModel" class="form-label">Modèle</label>
               <input type="text" list="results" class="form-control" [value]="inputModele" id="BoatModel" (input)="chercherBateau($event)" placeholder="" value="" required>
-              <div style="max-height: 300px; overflow: auto" class="bg-secondary rounded m-3" id="results">
-                <button type="button" style="width:45%; height: auto" class="btn btn-primary m-1 col-5 "  *ngFor="let bateau of bateaux;" (click)="bateauClick(bateau.name, bateau.ref)" value={{bateau.ref}} >{{bateau.name}}</button>
-              </div>
-              <div class="invalid-feedback">
-                Le modèle du bateau est requis.
+              <small *ngIf="messageErreur" class="text-muted form-text">{{messageErreur}}</small>
+              <div style="max-height: 300px; overflow: auto; width: 100%;" class="bg-secondary rounded m-3" id="results">
+                <button type="button" style="width:47%; height: auto" class="btn btn-primary m-1"  *ngFor="let bateau of bateaux;" (click)="bateauClick(bateau.name, bateau.ref)" value={{bateau.ref}} >{{bateau.name}}</button>
               </div>
             </div>
 
             <div class="col-sm-3">
-              <label for="" class="form-label">Longueur (en mètre)</label>
+              <label for="" class="form-label">Longueur</label>
               <div class="input-group">
                 <input type="text" class="form-control" id="BoatLength" placeholder="" [value]="longueurBateau" readonly>
-                <span class="input-group-text display-1">mètres</span>
+                <span class="input-group-text ">mètres</span>
               </div>
             </div>
           </div>
