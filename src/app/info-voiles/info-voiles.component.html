@@ -3,7 +3,7 @@
   <hr class="my-4">
   <div class="col-12">
     <ul class="nav nav-tabs">
-      <li class="nav-item" role="presentation">
+      <li class="nav-item" *ngIf="lesVoiles['grandvoiles']['gve'].length & lesVoiles['grandvoiles']['gvl'].length & lesVoiles['grandvoiles']['gvsl'].length" role="presentation">
         <button class="nav-link active" id="gv-tab" data-bs-toggle="tab" data-bs-target="#tab-gv" type="button"
           role="tab" aria-controls="gv" aria-selected="true">Grands-voiles</button>
       </li>
@@ -15,66 +15,66 @@
         <button class="nav-link" id="spi-tab" data-bs-toggle="tab" data-bs-target="#tab-spi" type="button" role="tab"
           aria-controls="spi" aria-selected="true">Voiles de portant</button>
       </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="access-tab" data-bs-toggle="tab" data-bs-target="#tab-access" type="button"
+      <li class="nav-item" *ngIf="lesVoiles['accessoires']['gs'].length" role="presentation">
+        <button  class="nav-link" id="access-tab" data-bs-toggle="tab" data-bs-target="#tab-access" type="button"
           role="tab" aria-controls="access" aria-selected="true">Accessoires</button>
       </li>
     </ul>
     <div class="tab-content" id="tab-sails">
       <div class="tab-pane fade show active" id="tab-gv" role="tabpanel" aria-labelledby="gv-tab">
-        <h1 class="m-3">Grand-voiles sur enrouleur</h1>
+        <h1 *ngIf="lesVoiles['grandvoiles']['gve'].length" class="m-3">Grand-voiles sur enrouleur</h1>
 
         <div *ngFor="let voile of lesVoiles['grandvoiles']['gve']">
           <div class="row m-2 border">
             <div class="col-md-8 m-3" [innerHTML]="voile.description">
             </div>
             <div class="col m-3">À partir de {{voile.price.unitPrice}} $</div> <button
-                class="col h-25 w-25 btn btn-primary m-3">configurer</button>
+                class="col h-25 w-25 btn btn-primary m-3">Configurer</button>
           </div>
         </div>
-        <h1 class="m-3">Grand-voiles semi-lattées</h1>
+        <h1 *ngIf="lesVoiles['grandvoiles']['gvsl'].length" class="m-3">Grand-voiles semi-lattées</h1>
 
         <div *ngFor="let voile of lesVoiles['grandvoiles']['gvsl']">
           <div class="row m-2 border">
             <div class="col-md-8 m-3" [innerHTML]="voile.description">
             </div>
             <div class="col m-3">À partir de {{voile.price.unitPrice}} $</div> <button
-                class="col h-25 w-25 btn btn-primary m-3">configurer</button>
+                class="col h-25 w-25 btn btn-primary m-3">Configurer</button>
           </div>
         </div>
-        <h1 class="m-3">Grand-voiles lattées</h1>
+        <h1 *ngIf="lesVoiles['grandvoiles']['gvl'].length" class="m-3">Grand-voiles lattées</h1>
 
         <div *ngFor="let voile of lesVoiles['grandvoiles']['gvl']">
           <div class="row m-2 border">
             <div class="col-md-8 m-3" [innerHTML]="voile.description">
             </div>
             <div class="col m-3">À partir de {{voile.price.unitPrice}} $</div> <button
-                class="col h-25 w-25 btn btn-primary m-3">configurer</button>
+                class="col h-25 w-25 btn btn-primary m-3">Configurer</button>
           </div>
         </div>
       </div>
       <div class="tab-pane fade show " id="tab-ge" role="tabpanel" aria-labelledby="ge-tab">
-        <h1 class="m-3">Génois sur enrouleur</h1>
+        <h1 *ngIf="lesVoiles['voilesavant']['ge'].length" class="m-3">Génois sur enrouleur</h1>
         <div *ngFor="let voile of lesVoiles['voilesavant']['ge']">
           <div class="row m-2 border">
             <div class="col-md-8 m-3" [innerHTML]="voile.description">
             </div>
             <div class="col m-3">À partir de {{voile.price.unitPrice}} $</div> <button
-                class="col h-25 w-25 btn btn-primary m-3">configurer</button>
+                class="col h-25 w-25 btn btn-primary m-3">Configurer</button>
           </div>
         </div>
-        <h1 class="m-3">Génois sur mousqueton</h1>
+        <h1 *ngIf="lesVoiles['voilesavant']['gm'].length" class="m-3">Génois sur mousqueton</h1>
         <div *ngFor="let voile of lesVoiles['voilesavant']['gm']">
           <div class="row m-2 border">
             <div class="col-md-8 m-3" [innerHTML]="voile.description">
             </div>
             <div class="col m-3">À partir de {{voile.price.unitPrice}} $</div> <button
-                class="col h-25 w-25 btn btn-primary m-3">configurer</button>
+                class="col h-25 w-25 btn btn-primary m-3">Configurer</button>
           </div>
         </div>
       </div>
       <div class="tab-pane fade show " id="tab-spi" role="tabpanel" aria-labelledby="spi-tab">
-        <h1 class="m-3">Spi symétrique</h1>
+        <h1 *ngIf="lesVoiles['voilesportant']['ss'].length" class="m-3">Spi symétrique</h1>
         <div *ngFor="let voile of lesVoiles['voilesportant']['ss']">
           <div class="row m-2 border">
             <div class="col-md-9 m-3" [innerHTML]="voile.description">
@@ -83,17 +83,17 @@
                 class="col h-25 w-25 btn btn-primary m-3">Configurer</button>
           </div>
         </div>
-        <h1 class="m-3">Spi asymétrique</h1>
+        <h1 *ngIf="lesVoiles['voilesportant']['sa'].length" class="m-3">Spi asymétrique</h1>
         <div *ngFor="let voile of lesVoiles['voilesportant']['sa']">
           <div class="row m-2 border">
             <div class="col-md-8 m-3" [innerHTML]="voile.description">
             </div>
             <div class="col m-3">À partir de {{voile.price.unitPrice}} $</div> <button
-                class="col h-25 w-25 btn btn-primary m-3">configurer</button>
+                class="col h-25 w-25 btn btn-primary m-3">Configurer</button>
           </div>
         </div>
       </div>
-    <div class="tab-pane fade show " id="tab-access" role="tabpanel" aria-labelledby="access-tab">
+    <div  class="tab-pane fade show " id="tab-access" role="tabpanel" aria-labelledby="access-tab">
       <div *ngIf="lesVoiles['accessoires']['gs'].length">
         <h1 class="m-3">SO Furl</h1>
         <div *ngFor="let voile of lesVoiles['accessoires']['gs']">
