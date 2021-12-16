@@ -39,8 +39,6 @@ interface iVoiles {
 
 export class InfoVoilesComponent implements OnInit {
   constructor() { }
-
-  //interface qui contiendra toutes les voiles afin de les afficher de manière classée
   lesVoiles :  iVoiles = {
     grandvoiles : [
       'gve', {titre : "Grand-voile sur enrouleur", voiles: []},
@@ -57,6 +55,8 @@ export class InfoVoilesComponent implements OnInit {
       gs : []
     }
   };
+
+  //interface qui contiendra toutes les voiles afin de les afficher de manière classée
   afficher:boolean = false;
   
   @Input() Voiles : any;
@@ -66,10 +66,11 @@ export class InfoVoilesComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges){
     if (!changes['Voiles'].isFirstChange()){
+      this.lesVoiles = {grandvoiles : { gve : [], gvl : [], gvsl : []}, voilesavant : { gm : [], ge : [] }, voilesportant : { ss : [], sa : [] }, accessoires : { gs : [] } };
       this.result = changes['Voiles'].currentValue;
       let resultat = (this.result as any)
       for (let i = 0; i < resultat.length; i++){
-        //if(resultat[i].price.unitPrice != 0){ //Peut etre enlevé, pas sur
+        if(resultat[i].price.unitPrice != 0){ //Peut etre enlevé, pas sur
           console.log(resultat[i]['type']);
           switch(resultat[i]['type']){
             case "GVE":
@@ -98,12 +99,8 @@ export class InfoVoilesComponent implements OnInit {
               break;
 
           } 
-        //}
+        }
       }
-      console.log("les gve : ");
-      console.log(this.lesVoiles["grandvoiles"]['gve']);
-      console.log("les gvsl : ");
-      console.log(this.lesVoiles["grandvoiles"]['gvsl']);
       this.afficher = true;
     }
   }
