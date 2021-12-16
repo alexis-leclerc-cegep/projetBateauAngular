@@ -2,11 +2,20 @@ import { Component, Directive, Input, OnInit, SimpleChanges} from '@angular/core
 
 
 interface iVoiles {
-  grandvoiles : {
-    gve : any;
-    gvl : any;
-    gvsl : any;
-  };
+  grandvoiles : [
+    gve : {
+      titre:string,
+      voiles :any
+    },
+    gvl : {
+      titre:string,
+      voiles :any
+    },
+    gvsl : {
+      titre:string,
+      voiles :any
+    }
+  ];
   voilesavant :{
     ge : any;
     gm : any;
@@ -33,9 +42,11 @@ export class InfoVoilesComponent implements OnInit {
 
   //interface qui contiendra toutes les voiles afin de les afficher de manière classée
   lesVoiles :  iVoiles = {
-    grandvoiles : {
-      gve : [], gvl : [], gvsl : []
-    },
+    grandvoiles : [
+      'gve', {titre : "Grand-voile sur enrouleur", voiles: []},
+      gvl : {titre : "Grand-voile lattée", voiles : []},
+      gvsl : {titre : "Grand-voile semi-lattée", voiles : []}
+    ],
     voilesavant : {
       gm : [], ge : []
     },
@@ -62,13 +73,13 @@ export class InfoVoilesComponent implements OnInit {
           console.log(resultat[i]['type']);
           switch(resultat[i]['type']){
             case "GVE":
-              this.lesVoiles.grandvoiles.gve.push(resultat[i]);
+              this.lesVoiles.grandvoiles.gve.voiles.push(resultat[i]);
               break;
             case "GVSL":
-              this.lesVoiles.grandvoiles.gvsl.push(resultat[i]);
+              this.lesVoiles.grandvoiles.gvsl.voiles.push(resultat[i]);
               break;
             case "GVL":
-              this.lesVoiles.grandvoiles.gvl.push(resultat[i]);
+              this.lesVoiles.grandvoiles.gvl.voiles.push(resultat[i]);
               break;
             case "GE":
               this.lesVoiles.voilesavant.ge.push(resultat[i]);
