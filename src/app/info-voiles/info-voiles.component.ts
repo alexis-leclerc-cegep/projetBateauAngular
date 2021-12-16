@@ -11,6 +11,13 @@ interface iVoiles {
     ge : any;
     gm : any;
   }
+  voilesportant : {
+    ss : any;
+    sa : any;
+  },
+  accessoires : {
+    gs : any;
+  }
   //ajouter voiles de portant et accessoire
 }
 
@@ -31,6 +38,12 @@ export class InfoVoilesComponent implements OnInit {
     },
     voilesavant : {
       gm : [], ge : []
+    },
+    voilesportant : {
+      ss : [], sa : []
+    },
+    accessoires : {
+      gs : []
     }
   };
   afficher:boolean = false;
@@ -62,6 +75,15 @@ export class InfoVoilesComponent implements OnInit {
               break;
             case "GM":
               this.lesVoiles.voilesavant.gm.push(resultat[i]);
+              break;
+            case "SS":
+              this.lesVoiles.voilesportant.ss.push(resultat[i]);
+              break;
+            case "SA":
+              this.lesVoiles.voilesportant.sa.push(resultat[i]);
+              break;
+            case "GS":
+              this.lesVoiles.accessoires.gs.push(resultat[i]);
               break;
 
           } 
