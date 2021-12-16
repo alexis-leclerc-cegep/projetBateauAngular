@@ -36,11 +36,15 @@ Décris les voiles disponibles ainsi que le prix.
 # Réussites
 
 Ça fonctionne
+
 L'interface est relativement belle
+
 Les composants sont bien séparés
+
 Bootstrap en dark mode, c'est bon pour les yeux
 
 # Échecs
 
 J'aurais aimé faire la gestion des voiles de manière plus concise dans le HTML.
+
 Au début j'ai essayé de communiquer avec l'API en utilisant rxHr, mais finalement http.get est utilisé.
