@@ -3,15 +3,15 @@
   <hr class="my-4">
   <div class="col-12">
     <ul class="nav nav-tabs">
-      <li class="nav-item" *ngIf="lesVoiles['grandvoiles']['gve'].length & lesVoiles['grandvoiles']['gvl'].length & lesVoiles['grandvoiles']['gvsl'].length" role="presentation">
+      <li class="nav-item" *ngIf="(lesVoiles['grandvoiles']['gve'].length || lesVoiles['grandvoiles']['gvl'].length || lesVoiles['grandvoiles']['gvsl'].length)" role="presentation">
         <button class="nav-link active" id="gv-tab" data-bs-toggle="tab" data-bs-target="#tab-gv" type="button"
           role="tab" aria-controls="gv" aria-selected="true">Grands-voiles</button>
       </li>
-      <li class="nav-item" role="presentation">
+      <li class="nav-item" *ngIf="lesVoiles['voilesavant']['ge'].length || lesVoiles['voilesavant']['gm'].length" role="presentation">
         <button class="nav-link" id="ge-tab" data-bs-toggle="tab" data-bs-target="#tab-ge" type="button" role="tab"
           aria-controls="ge" aria-selected="true">Voiles d'avant</button>
       </li>
-      <li class="nav-item" role="presentation">
+      <li class="nav-item" *ngIf = "lesVoiles['voilesportant']['ss'].length || lesVoiles['voilesportant']['sa'].length" role="presentation">
         <button class="nav-link" id="spi-tab" data-bs-toggle="tab" data-bs-target="#tab-spi" type="button" role="tab"
           aria-controls="spi" aria-selected="true">Voiles de portant</button>
       </li>
